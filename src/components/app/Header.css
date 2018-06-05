@@ -1,0 +1,25 @@
+header {
+    grid-area: header;
+    background-color: var(--color-header);
+    padding-left: 10px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+header h1 {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: var(--color-header-text);
+}
+
+.header__titlesub {
+    font-size: 0.65em;
+}
+
+.header__connection {
+    vertical-align: middle;
+    font-size: 0.75em;
+    color: rgb(197, 197, 197);
+}

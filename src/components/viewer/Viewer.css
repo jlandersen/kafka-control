@@ -1,0 +1,8 @@
+.viewer ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.viewer__partition_id {
+    font-size: 1.6em;
+}

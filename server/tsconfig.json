@@ -1,0 +1,14 @@
+{
+    "extends": "../tsconfig",
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "../dist/server",
+        "esModuleInterop": true,
+    },
+    "include": [
+        "**/*"
+    ],
+    "exclude": [
+        "../node_modules"
+    ]
+}

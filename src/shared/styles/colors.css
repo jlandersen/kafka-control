@@ -1,0 +1,13 @@
+:root {
+    --color-sidebar: #3c3f4d;
+    --color-sidebar-topic-scroll-thumb: #7f8088;
+    --color-sidebar-topic-scroll-track: #5b5c64;
+    --color-sidebar-topic-scroll-track-hover: #6b6c72;
+    --color-text-sidebar-grouptitle: rgb(145, 145, 145);
+    --color-header: #3c3f4d;
+    --color-header-text: #ffff;
+    --color-main: #ffffff;
+    --color-text: #383838;
+    --color-text-link: #cccdd0;
+    --color-text-link-active: #fff;
+}

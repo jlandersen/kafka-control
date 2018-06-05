@@ -1,0 +1,19 @@
+@import "colors.css";
+
+body {
+    font-size: 1em;
+    margin: 0;
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: var(--color-main);
+}   
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-areas: 
+        "header main"
+        "nav    main";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 75px auto;
+}

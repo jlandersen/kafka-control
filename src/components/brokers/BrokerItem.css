@@ -1,0 +1,14 @@
+.brokeritem {
+    border: 1px solid #ccc;
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+.brokeritem:hover {
+    background-color: rgb(252, 249, 249);
+}
+
+.brokeritem__nodeid {
+    color: #000;
+    font-style: italic;
+}

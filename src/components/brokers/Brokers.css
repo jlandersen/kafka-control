@@ -1,0 +1,9 @@
+.brokers__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brokers__list > div {
+    flex: 0 0 200px;
+    margin: 0 10px 10px 0;
+}

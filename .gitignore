@@ -1,6 +1,9 @@
 # Ignore output folder
 dist/
 
+# Awesome Typescript Loader cache
+.awcache
+
 # Logs
 logs
 *.log

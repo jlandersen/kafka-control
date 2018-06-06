@@ -4,10 +4,10 @@
   "description": "A web based kafka UI",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./dist/server/",
-    "build:client": "webpack --config ./webpack.config.prod.js",
-    "build:server": "tsc -p ./server/tsconfig.json",
-    "build": "npm run build:server && npm run build:client"
+    "start": "npm run build:dev && nodemon ./dist/server/",
+    "build:dev": "webpack && tsc -p ./server/tsconfig.json",
+    "build:prod": "webpack --config ./webpack.config.prod.js && tsc -p ./server/tsconfig.json",
+    "build:serveronly": "tsc -p ./server/tsconfig.json"
   },
   "keywords": [
     "kafka",

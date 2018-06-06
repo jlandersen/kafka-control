@@ -5,9 +5,9 @@
     "tasks": [
         {
             "label": "Build server",
-            "identifier": "build:server",
+            "identifier": "build:serveronly",
             "type": "npm",
-            "script": "build:server",
+            "script": "build:serveronly",
             "group": {
                 "kind": "build",
                 "isDefault": true

@@ -186,8 +186,8 @@ export default function topicsReducer(state: TopicsState = initialState, action:
             };
         case TopicsActionKeys.SelectTopic: {
             return {
-                selectedTopicId: action.topicId,
                 ...state,
+                selectedTopicId: action.topicId,
             };
         }
     }

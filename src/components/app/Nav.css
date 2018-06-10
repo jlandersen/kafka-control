@@ -40,12 +40,26 @@ nav a {
     width: 8px; 
 }
 
+.nav__group {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-sidebar-grouptitle);
+}
+
 .nav__grouptitle {
     font-size: 0.9em;
     text-transform: uppercase;
     font-weight: 400;
     padding-left: 10px;
-    color: var(--color-text-sidebar-grouptitle);
+}
+
+.nav__groupactions {
+    padding-right: 10px;
+    color: var(--color-text-sidebar-groupaction);
+}
+
+.nav__groupactions__action:hover {
+    color: var(--color-text-sidebar-groupaction-hover);
 }
 
 .nav__linkitem {

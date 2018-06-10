@@ -1,6 +1,7 @@
 import { Location } from "history";
 import React from "react";
 import Ellipsis from "react-icons/lib/fa/ellipsis-h";
+import Plus from "react-icons/lib/fa/plus";
 import Server from "react-icons/lib/fa/server";
 
 import { Topic } from "../../redux/topics";
@@ -18,7 +19,9 @@ export default class Nav extends React.PureComponent<NavProps> {
     render() {
         return (
             <nav>
-                <span className="nav__grouptitle">Cluster</span>
+                <div className="nav__group">
+                    <div className="nav__grouptitle">Cluster</div>
+                </div>
                 <ul>
                     <li>
                         <NavLinkItem activeClassName="active" path={"/brokers"} location={this.props.location}>
@@ -38,14 +41,23 @@ export default class Nav extends React.PureComponent<NavProps> {
                         </NavLinkItem>
                     </li>
                 </ul>
-                <span className="nav__grouptitle">Topics</span>
+                <div className="nav__group">
+                    <div className="nav__grouptitle">Topics</div>
+                    <div className="nav__groupactions">
+                        <NavLinkItem
+                            path="/topics/create"
+                            location={this.props.location}>
+                            <Plus className="nav__groupactions__action" />
+                        </NavLinkItem>
+                    </div>
+                </div>
                 <div className="nav__topics">
                     <ul>
                         {this.props.topics.map((topic) =>
                             <li key={topic.id}>
                                 <NavLinkItem
                                     activeClassName="active"
-                                    path={`/topics/${topic.id}`}
+                                    path={`/topics/view/${topic.id}`}
                                     location={this.props.location}>
                                     <div className="nav__linkitem">
                                         <div>

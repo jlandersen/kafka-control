@@ -1,4 +1,5 @@
 import Brokers from "../components/brokers/Brokers";
+import CreateTopic from "../components/createtopic/CreateTopic";
 import Splash from "../components/splash/Splash";
 import Viewer from "../components/viewer/Viewer";
 
@@ -17,7 +18,12 @@ export default routes = [
     {
         component: Viewer,
         exact: false,
-        path: "/topics/:id",
+        path: "/topics/view/:id",
+    },
+    {
+        component: CreateTopic,
+        exact: false,
+        path: "/topics/create",
     },
     {
         component: Brokers,

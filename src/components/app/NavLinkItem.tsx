@@ -4,7 +4,7 @@ import { Link, Route } from "react-router-dom";
 
 interface NavLinkItemProps {
     path: string;
-    activeClassName: string;
+    activeClassName?: string;
     children?: any;
     location: Location;
 }

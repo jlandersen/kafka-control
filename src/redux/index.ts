@@ -2,8 +2,8 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
 import io from "socket.io-client";
 
-import socketMiddleware from "../redux/middleware/socketMiddleware";
 import brokersReducer, { BrokerState } from "./brokers";
+import socketMiddleware from "./middleware/socketMiddleware";
 import topicsReducer, { TopicsState } from "./topics";
 import workspaceReducer, { ConnectionStatus, WorkspaceState } from "./workspace";
 

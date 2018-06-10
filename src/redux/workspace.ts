@@ -28,7 +28,7 @@ enum WorkspaceActionKeys {
     StartLoad = "workspace/load_start",
     StopLoad = "workspace/load_stop",
     ReceiveConnectionStatus = "workspace/CONNECTIONSTATUS_RESPONSE",
-    ReceiveError = "workspace/ERROR",
+    ReceiveError = "workspace/ERROR_RESPONSE",
     StartConnection = "server/workspace/START",
     RegisterError = "workspace/register_error",
 }

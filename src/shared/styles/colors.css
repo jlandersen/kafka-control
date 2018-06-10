@@ -4,6 +4,8 @@
     --color-sidebar-topic-scroll-track: #5b5c64;
     --color-sidebar-topic-scroll-track-hover: #6b6c72;
     --color-text-sidebar-grouptitle: rgb(145, 145, 145);
+    --color-text-sidebar-groupaction: rgb(145, 145, 145);
+    --color-text-sidebar-groupaction-hover: rgb(122, 122, 122);
     --color-header: #3c3f4d;
     --color-header-text: #ffff;
     --color-main: #ffffff;

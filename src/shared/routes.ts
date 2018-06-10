@@ -1,13 +1,15 @@
-import Brokers from "../components/brokers/Brokers";
-import CreateTopic from "../components/createtopic/CreateTopic";
-import Splash from "../components/splash/Splash";
-import Viewer from "../components/viewer/Viewer";
+import Brokers from "../components/brokers";
+import CreateTopic from "../components/createtopic";
+import Splash from "../components/splash";
+import Viewer from "../components/viewer";
 
-let routes: Array<{
-    component: any,
-    exact: boolean,
-    path: string,
-}>;
+interface Route {
+    component: any;
+    exact: boolean;
+    path: string;
+}
+
+let routes: Route[];
 
 export default routes = [
     {

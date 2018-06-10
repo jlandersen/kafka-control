@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Router } from "react-router-dom";
 
-import App from "./components/app/App";
+import App from "./components/app";
 import store from "./redux";
 import { selectTopic } from "./redux/topics";
 

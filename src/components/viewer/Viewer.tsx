@@ -1,6 +1,5 @@
 import React from "react";
 import Bars from "react-icons/lib/fa/bars";
-import Table from "react-icons/lib/fa/table";
 import { connect, Dispatch } from "react-redux";
 import { match } from "react-router";
 import { bindActionCreators } from "redux";
@@ -8,7 +7,6 @@ import { bindActionCreators } from "redux";
 import { AppState } from "../../redux";
 import { ConsumerMessage, getTopicMessages, selectTopic, TopicPartition } from "../../redux/topics";
 import { getSelectedTopicPartitions, startConsumerForTopic } from "../../redux/topics";
-import RecordItem from "./RecordItem";
 
 import "./Viewer.css";
 

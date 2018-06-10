@@ -2,10 +2,8 @@ import { Location } from "history";
 import React from "react";
 import Ellipsis from "react-icons/lib/fa/ellipsis-h";
 import Server from "react-icons/lib/fa/server";
-import { Link, NavLink, Route } from "react-router-dom";
 
 import { Topic } from "../../redux/topics";
-import routes from "../../shared/routes";
 import NavLinkItem from "./NavLinkItem";
 
 import "./Nav.css";

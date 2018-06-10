@@ -1,6 +1,4 @@
-import { Action } from "redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { Middleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import io from "socket.io-client";
 

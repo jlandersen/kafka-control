@@ -1,8 +1,8 @@
 import { Location } from "history";
 import queryString from "query-string";
 import React from "react";
-import { connect, Dispatch, Provider } from "react-redux";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { connect, Dispatch } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 
 import { ErrorMessage } from "../../models";

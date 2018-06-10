@@ -4,7 +4,7 @@
   "description": "A web based kafka UI",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:dev && nodemon ./dist/server/",
+    "start": "concurrently webpack \"tsc -w -p ./server/tsconfig.json\" \"nodemon ./dist/server/\"",
     "test": "npm run lint",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "build:dev": "webpack && tsc -p ./server/tsconfig.json",
@@ -53,6 +53,7 @@
     "awesome-typescript-loader": "^5.0.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",

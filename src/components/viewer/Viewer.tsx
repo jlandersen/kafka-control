@@ -1,8 +1,8 @@
 import React from "react";
-import Bars from "react-icons/lib/fa/bars";
-import { connect, Dispatch } from "react-redux";
+import { FaBars } from "react-icons/fa";
+import { connect } from "react-redux";
 import { match } from "react-router";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 
 import { AppState } from "../../redux";
 import { ConsumerMessage, getTopicMessages, selectTopic, TopicPartition } from "../../redux/topics";
@@ -58,7 +58,7 @@ class Viewer extends React.PureComponent<ViewerProps & ViewerDispatchProps, {}> 
         return (
             <div className="viewer">
                 <h1>Topic: {this.props.topicId} </h1>
-                <h2><Bars style={{ verticalAlign: "sub" }} /> Partitions</h2>
+                <h2><FaBars style={{ verticalAlign: "sub" }} /> Partitions</h2>
                 <ul>
                     {partitions}
                 </ul>

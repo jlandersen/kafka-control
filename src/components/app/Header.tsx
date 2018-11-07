@@ -1,5 +1,5 @@
 import React from "react";
-import Circle from "react-icons/lib/fa/circle";
+import { FaCircle } from "react-icons/fa";
 
 import { ConnectionStatus } from "../../redux/workspace";
 
@@ -39,7 +39,7 @@ export default class Header extends React.PureComponent<HeaderProps> {
                 </div>
 
                 <div className="header__connection">
-                    <Circle
+                    <FaCircle
                         color={connectionStatusDisplayValues.color}
                         width={15}
                         height={15} /> {connectionStatusDisplayValues.statusText}

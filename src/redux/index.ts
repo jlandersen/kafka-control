@@ -7,7 +7,7 @@ import socketMiddleware from "./middleware/socketMiddleware";
 import topicsReducer, { TopicsState } from "./topics";
 import workspaceReducer, { ConnectionStatus, WorkspaceState } from "./workspace";
 
-const socket = io(document.location.origin);
+const socket = io(document.location!.origin);
 
 export interface AppState {
     workspace: WorkspaceState;

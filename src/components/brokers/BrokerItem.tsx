@@ -1,5 +1,5 @@
-import React from "react";
-import Server from "react-icons/lib/fa/server";
+import * as React from "react";
+import { FaServer } from "react-icons/fa";
 
 import { Broker } from "../../models";
 
@@ -14,7 +14,7 @@ export default class BrokerItem extends React.PureComponent<BrokerItemProps, {}>
         return (
             <div className="brokeritem">
                 <div>
-                    <Server color={"#000"} /> <span className="brokeritem__nodeid">#{this.props.broker.nodeId}</span>
+                    <FaServer color={"#000"} /> <span className="brokeritem__nodeid">#{this.props.broker.nodeId}</span>
                 </div>
                 <div>
                     Host: {this.props.broker.host}

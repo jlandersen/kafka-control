@@ -1,8 +1,6 @@
 import { Location } from "history";
 import React from "react";
-import Ellipsis from "react-icons/lib/fa/ellipsis-h";
-import Plus from "react-icons/lib/fa/plus";
-import Server from "react-icons/lib/fa/server";
+import { FaEllipsisH, FaPlus, FaServer } from "react-icons/fa";
 
 import { Topic } from "../../redux/topics";
 import NavLinkItem from "./NavLinkItem";
@@ -27,7 +25,7 @@ export default class Nav extends React.PureComponent<NavProps> {
                         <NavLinkItem activeClassName="active" path={"/brokers"} location={this.props.location}>
                             <div className="nav__linkitem">
                                 <div>
-                                    <Server color={"#fff"} />
+                                    <FaServer color={"#fff"} />
                                 </div>
                                 <div className="nav__linkitemcontent">
                                     <div>
@@ -47,7 +45,7 @@ export default class Nav extends React.PureComponent<NavProps> {
                         <NavLinkItem
                             path="/topics/create"
                             location={this.props.location}>
-                            <Plus className="nav__groupactions__action" />
+                            <FaPlus className="nav__groupactions__action" />
                         </NavLinkItem>
                     </div>
                 </div>
@@ -61,7 +59,7 @@ export default class Nav extends React.PureComponent<NavProps> {
                                     location={this.props.location}>
                                     <div className="nav__linkitem">
                                         <div>
-                                            <Ellipsis color={"#fff"} />
+                                            <FaEllipsisH color={"#fff"} />
                                         </div>
                                         <div className="nav__linkitemcontent">
                                             <div>

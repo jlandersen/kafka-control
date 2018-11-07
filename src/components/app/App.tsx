@@ -1,9 +1,9 @@
 import { Location } from "history";
 import queryString from "query-string";
 import React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 import { Route, withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 
 import { ErrorMessage } from "../../models";
 import { AppState } from "../../redux";
@@ -78,7 +78,7 @@ class App extends React.PureComponent<AppProps & AppDispatchprops, {}> {
     private init() {
         // Sets up the connection from the provided list of brokers in ?brokers=..
         const params = queryString.parse(this.props.location.search);
-        const brokers = params.brokers;
+        const brokers = params.brokers as string;
 
         if (!brokers) {
             this.props.actions.onError({

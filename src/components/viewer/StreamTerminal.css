@@ -7,6 +7,10 @@
     overflow-y: auto;
 }
 
+.streamterminal::-webkit-scrollbar-thumb { 
+    background-color: var(--color-sidebar-topic-scroll-thumb); 
+}
+
 .streamterminal::-webkit-scrollbar-thumb:hover { 
     background-color: #CCC; 
 } 

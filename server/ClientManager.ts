@@ -30,10 +30,31 @@ class ClientManager {
 
         const kafkaClient = socketObj.kafkaClient;
         if (kafkaClient) {
-            kafkaClient.close();
+            kafkaClient.close((err: any) => {
+                if (err) {
+                    console.error(err);
+                }
+            });
+        }
+
+        const consumer = socketObj.consumer;
+        if (consumer) {
+            consumer.close(true, (err: any) => {
+                if (err) {
+                    console.error(err);
+                }
+            });
         }
 
         delete this.clients[socketId];
+    }
+
+    dispose() {
+        console.log("Shutting down server");
+
+        Object.keys(this.clients).forEach((socketId) => {
+            this.deregister(socketId);
+        });
     }
 
     connect(socketId: string, brokers: string) {

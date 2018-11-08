@@ -68,5 +68,8 @@ async function initServer(developmentMode: boolean, portNumber: number) {
             clientManager.startConsumer(socket.id, data.topicId);
         });
     });
-
 }
+
+process.once("SIGINT",  () => {
+    clientManager.dispose();
+});

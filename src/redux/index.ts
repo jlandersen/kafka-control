@@ -9,6 +9,13 @@ import workspaceReducer, { ConnectionStatus, WorkspaceState } from "./workspace"
 
 const socket = io(document.location!.origin);
 
+// Set initial selected topic id based on url
+const topicsSegment = "/topics/";
+let selectedTopicId;
+if (document.location!.pathname.startsWith(topicsSegment)) {
+    selectedTopicId = document.location!.pathname.slice(document.location!.pathname.lastIndexOf("/") + 1);
+}
+
 export interface AppState {
     workspace: WorkspaceState;
     topics: TopicsState;
@@ -25,6 +32,7 @@ const initialState: AppState = {
     topics: {
         items: {},
         messagesByTopicId: {},
+        selectedTopicId,
     },
     brokers: {
         items: {},

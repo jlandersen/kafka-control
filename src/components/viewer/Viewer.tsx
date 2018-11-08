@@ -29,12 +29,11 @@ interface ViewerState {
     isStreaming: boolean;
 }
 
-const mapStateToProps = (state: AppState, ownProps: { match: match<{ id: string }> }): ViewerProps => {
-    const selectedTopicId = ownProps.match.params.id;
+const mapStateToProps = (state: AppState): ViewerProps => {
     return {
-        topicId: selectedTopicId,
+        topicId: state.topics.selectedTopicId!,
         partitions: getSelectedTopicPartitions(state.topics),
-        messages: getTopicMessages(state.topics, selectedTopicId),
+        messages: getTopicMessages(state.topics, state.topics.selectedTopicId!),
     };
 };
 

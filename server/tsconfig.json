@@ -3,7 +3,6 @@
     "compilerOptions": {
         "sourceMap": true,
         "outDir": "../dist/server",
-        "esModuleInterop": true,
     },
     "include": [
         "**/*"

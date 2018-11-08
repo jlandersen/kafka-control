@@ -1,5 +1,4 @@
-import kafka from "kafka-node";
-import { isNullOrUndefined } from "util";
+import * as kafka from "kafka-node";
 
 export type ActionHandler = (type: string, data: any) => void;
 
@@ -109,6 +108,68 @@ class ClientManager {
         });
 
         socketObj.kafkaClient = kafkaClient;
+    }
+
+    startConsumer(socketId: string, topicId: string) {
+        const existingConsumerGroup = this.clients[socketId].consumer;
+
+        if (existingConsumerGroup) {
+            existingConsumerGroup.close(true, (error: any) => {
+                if (error) {
+                    console.log("Failed to close consumer");
+                    return;
+                }
+
+                this.clients[socketId].consumer = null;
+                this.startConsumer(socketId, topicId);
+            });
+            return;
+        }
+
+        const consumerOptions = {
+            kafkaHost: "kf01bk01.dev-plat.com:9092",
+            groupId: "ExampleTestGroup",
+            sessionTimeout: 15000,
+            protocol: ["roundrobin"],
+            fromOffset: "earliest", // equivalent of auto.offset.reset valid values are 'none', 'latest', 'earliest'
+          };
+
+        const consumerGroup = new kafka.ConsumerGroup(
+            Object.assign({id: "consumer1"}, consumerOptions),
+            ["test-events-f4"]);
+        this.clients[socketId].consumer = consumerGroup;
+
+        consumerGroup.on("connect", () => {
+            const socketObj = this.clients[socketId];
+
+            socketObj.handler("topics/TOPICS_CONSUME_CONNECT", {
+            });
+        });
+
+        consumerGroup.on("error", (err: any) => {
+            const socketObj = this.clients[socketId];
+            console.error(err);
+
+            socketObj.handler("topics/TOPICS_CONSUME_ERROR", {
+            });
+        });
+
+        consumerGroup.on("message", (msg: any) => {
+            const socketObj = this.clients[socketId];
+
+            if (!socketObj) {
+                consumerGroup.close();
+                return;
+            }
+
+            socketObj.handler("topics/TOPICS_CONSUME_RECEIVE", {
+                topicId,
+                messages: [{
+                    id: `${msg.partition}${msg.offset}`,
+                    ...msg,
+                }],
+            });
+        });
     }
 }
 

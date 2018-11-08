@@ -1,6 +1,6 @@
-import express from "express";
-import path from "path";
-import socketio from "socket.io";
+import * as express from "express";
+import * as path from "path";
+import * as socketio from "socket.io";
 
 import clientManager from "./ClientManager";
 
@@ -19,13 +19,13 @@ async function initServer(developmentMode: boolean, portNumber: number) {
         const webpack = await import("webpack");
         const webpackMiddleware = await import("webpack-dev-middleware");
         const webpackHotMiddleware = await import("webpack-hot-middleware");
-        const compiler = webpack.default({ ...webpackDevConfig, mode: "development" });
-        const middleware = webpackMiddleware.default(compiler, {
+        const compiler = webpack({ ...webpackDevConfig, mode: "development" });
+        const middleware = webpackMiddleware(compiler, {
             publicPath: webpackDevConfig.output.publicPath,
         });
 
         app.use(middleware);
-        app.use(webpackHotMiddleware.default(compiler, {
+        app.use(webpackHotMiddleware(compiler, {
             log: false,
             path: "/__webpack_hmr",
             heartbeat: 10 * 1000,
@@ -34,7 +34,7 @@ async function initServer(developmentMode: boolean, portNumber: number) {
 
     app.use(express.static(path.resolve(__dirname, "../")));
 
-    app.get("*", (req, res) => {
+    app.get("*", (req: any, res: any) => {
         res.sendFile(path.resolve(__dirname, "../", "index.html"));
     });
 
@@ -48,7 +48,7 @@ async function initServer(developmentMode: boolean, portNumber: number) {
 
     const io = socketio(server);
 
-    io.on("connection", (socket) => {
+    io.on("connection", (socket: any) => {
         clientManager.register(socket.id, (type, data) => {
             socket.emit("action", {
                 type,
@@ -60,8 +60,12 @@ async function initServer(developmentMode: boolean, portNumber: number) {
             clientManager.deregister(socket.id);
         });
 
-        socket.on("server/workspace/START", (data) => {
+        socket.on("server/workspace/START", (data: any) => {
             clientManager.connect(socket.id, data.brokers);
+        });
+
+        socket.on("server/topics/TOPICS_CONSUME", (data: any) => {
+            clientManager.startConsumer(socket.id, data.topicId);
         });
     });
 

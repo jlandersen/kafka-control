@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTable } from "react-icons/fa";
 import { connect } from "react-redux";
 import { match } from "react-router";
 import { bindActionCreators, Dispatch } from "redux";
@@ -9,6 +9,7 @@ import { ConsumerMessage, getTopicMessages, selectTopic, TopicPartition } from "
 import { getSelectedTopicPartitions, startConsumerForTopic } from "../../redux/topics";
 
 import "./Viewer.css";
+import Stream from "./Stream";
 
 interface ViewerProps {
     topicId: string;
@@ -25,7 +26,6 @@ interface ViewerDispatchProps {
 
 const mapStateToProps = (state: AppState, ownProps: { match: match<{ id: string }> }): ViewerProps => {
     const selectedTopicId = ownProps.match.params.id;
-
     return {
         topicId: selectedTopicId,
         partitions: getSelectedTopicPartitions(state.topics),
@@ -58,18 +58,22 @@ class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, {}> {
         return (
             <div className="viewer">
                 <h1>Topic: {this.props.topicId} </h1>
-                <h2><FaBars style={{ verticalAlign: "sub" }} /> Partitions</h2>
-                <ul>
-                    {partitions}
-                </ul>
+                <div className="viewer__partitions">
+                    <h2><FaBars style={{ verticalAlign: "sub" }} /> Partitions</h2>
+                    <ul>
+                        {partitions}
+                    </ul>
+                </div>
 
-                {/* <h2><Table style={{ verticalAlign: "top" }} /> Data</h2>
-                <button onClick={() => this.props.actions.onStartConsumer(this.props.topicId)}>
-                    Click here to start processing messages
-                </button>
-                <ul>
-                    {items}
-                </ul> */}
+                <div className="viewer__stream">
+                    <h2><FaTable style={{ verticalAlign: "top" }} /> Stream</h2>
+                    <button onClick={() => this.props.actions.onStartConsumer(this.props.topicId)}>
+                        Click here to start consuming messages
+                    </button>
+                    <ul>
+                        <Stream lines={this.props.messages} />
+                    </ul>
+                </div>
             </div>
         );
     }

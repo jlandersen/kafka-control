@@ -6,3 +6,13 @@
 .viewer__partition_id {
     font-size: 1.6em;
 }
+
+.viewer__partitionlist {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.viewer__partitionlist > div {
+    flex: 0 0 200px;
+    margin: 0 10px 10px 0;
+}

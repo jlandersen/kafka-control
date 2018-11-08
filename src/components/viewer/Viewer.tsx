@@ -1,7 +1,6 @@
 import React from "react";
-import { FaBars, FaTable } from "react-icons/fa";
+import { FaBars, FaCheckCircle, FaTable } from "react-icons/fa";
 import { connect } from "react-redux";
-import { match } from "react-router";
 import { bindActionCreators, Dispatch } from "redux";
 
 import { AppState } from "../../redux";
@@ -11,6 +10,7 @@ import { getSelectedTopicPartitions, startConsumerForTopic } from "../../redux/t
 import "./Viewer.css";
 
 import Stream from "./Stream";
+import PartitionItem from "./PartitionItem";
 
 interface ViewerProps {
     topicId: string;
@@ -80,10 +80,7 @@ class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, ViewerSt
 
     render() {
         const partitions = this.props.partitions.map((p) =>
-            <li key={p.partition}>
-                <span className="viewer__partition_id">{p.partition}</span> -
-                 Leader: {p.leader}, ISR: {p.isr.join(",")}, Replicas: {p.replicas.join(",")}
-            </li>);
+            <PartitionItem key={p.partition} partition={p} />);
         // const items = this.props.messages.map((m) => <RecordItem key={m.id} value={m.value} />);
 
         return (
@@ -91,9 +88,9 @@ class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, ViewerSt
                 <h1>Topic: {this.props.topicId} </h1>
                 <div className="viewer__partitions">
                     <h2><FaBars style={{ verticalAlign: "sub" }} /> Partitions</h2>
-                    <ul>
+                    <div className="brokers__list">
                         {partitions}
-                    </ul>
+                    </div>
                 </div>
 
                 <div className="viewer__stream">

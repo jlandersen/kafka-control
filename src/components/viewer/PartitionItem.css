@@ -1,0 +1,15 @@
+.partitionitem {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+.partitionitem:hover {
+    background-color: rgb(252, 249, 249);
+}
+
+.partitionitem__partitionid {
+    font-size: 1.1em;
+    padding-left: 5px;
+    color: rgb(138, 138, 138);
+}

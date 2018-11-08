@@ -42,7 +42,7 @@ const mapDispatchFromProps = (dispatch: Dispatch): ViewerDispatchProps => {
     };
 };
 
-class Viewer extends React.PureComponent<ViewerProps & ViewerDispatchProps, {}> {
+class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, {}> {
     componentDidMount() {
         this.props.actions.onSelectTopic(this.props.topicId);
     }

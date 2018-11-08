@@ -18,7 +18,7 @@ history.listen((data) => {
         return;
     }
 
-    store.dispatch(selectTopic(data.pathname.slice(topicsSegment.length)));
+    store.dispatch(selectTopic(data.pathname.slice(data.pathname.lastIndexOf("/") + 1)));
 });
 
 ReactDOM.render(

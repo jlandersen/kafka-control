@@ -1,4 +1,5 @@
 import kafka from "kafka-node";
+import { isNullOrUndefined } from "util";
 
 export type ActionHandler = (type: string, data: any) => void;
 
@@ -71,11 +72,20 @@ class ClientManager {
                 }
 
                 const topic = kafkaClient.topicMetadata[topicId];
+                const keys = Object.keys(topic)[0];
+
+                let partitionCount = 0;
+                let replicationFactor = 0;
+
+                if (keys) {
+                    partitionCount = Object.keys(topic).length;
+                    replicationFactor = topic[keys].replicas.length;
+                }
 
                 topicsById[topicId] = {
                     id: topicId,
-                    partitionCount: Object.keys(topic).length,
-                    replicationFactor: topic[0].replicas.length,
+                    partitionCount,
+                    replicationFactor,
                     partitions: topic,
                 };
             }

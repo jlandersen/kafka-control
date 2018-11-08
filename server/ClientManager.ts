@@ -131,7 +131,7 @@ class ClientManager {
             groupId: "ExampleTestGroup",
             sessionTimeout: 15000,
             protocol: ["roundrobin"],
-            fromOffset: "earliest", // equivalent of auto.offset.reset valid values are 'none', 'latest', 'earliest'
+            fromOffset: "earliest",
           };
 
         const consumerGroup = new kafka.ConsumerGroup(

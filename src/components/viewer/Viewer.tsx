@@ -9,6 +9,7 @@ import { ConsumerMessage, getTopicMessages, selectTopic, TopicPartition } from "
 import { getSelectedTopicPartitions, startConsumerForTopic } from "../../redux/topics";
 
 import "./Viewer.css";
+
 import Stream from "./Stream";
 
 interface ViewerProps {
@@ -22,6 +23,10 @@ interface ViewerDispatchProps {
         onSelectTopic(topicId: string): any;
         onStartConsumer(topicId: string): any;
     };
+}
+
+interface ViewerState {
+    isStreaming: boolean;
 }
 
 const mapStateToProps = (state: AppState, ownProps: { match: match<{ id: string }> }): ViewerProps => {
@@ -42,9 +47,23 @@ const mapDispatchFromProps = (dispatch: Dispatch): ViewerDispatchProps => {
     };
 };
 
-class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, {}> {
+class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, ViewerState> {
+    state: ViewerState = {
+        isStreaming: false,
+    };
+
     componentDidMount() {
         this.props.actions.onSelectTopic(this.props.topicId);
+    }
+
+    startConsumer() {
+        this.props.actions.onStartConsumer(this.props.topicId);
+        this.setState((prev) => {
+            return {
+                ...prev,
+                isStreaming: true,
+            };
+        });
     }
 
     render() {
@@ -67,11 +86,11 @@ class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, {}> {
 
                 <div className="viewer__stream">
                     <h2><FaTable style={{ verticalAlign: "top" }} /> Stream</h2>
-                    <button onClick={() => this.props.actions.onStartConsumer(this.props.topicId)}>
+                    <button onClick={() => this.startConsumer() }>
                         Click here to start consuming messages
                     </button>
                     <ul>
-                        <Stream lines={this.props.messages} />
+                        <Stream lines={this.props.messages} isVisible={this.state.isStreaming} />
                     </ul>
                 </div>
             </div>

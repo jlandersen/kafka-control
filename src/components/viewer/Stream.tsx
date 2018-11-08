@@ -4,11 +4,14 @@ import StreamTerminal from "./StreamTerminal";
 
 interface StreamProps {
     lines: ConsumerMessage[];
+    isVisible: boolean;
 }
 
 class Stream extends React.Component<StreamProps, {}> {
     render() {
-        return <div><StreamTerminal lines={this.props.lines} /></div>;
+        return <div className={this.props.isVisible ? "fadeIn" : "fadeOut"}>
+            <StreamTerminal lines={this.props.lines} />
+            </div>;
     }
 }
 

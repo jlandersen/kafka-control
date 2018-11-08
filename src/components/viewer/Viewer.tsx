@@ -56,6 +56,19 @@ class Viewer extends React.Component<ViewerProps & ViewerDispatchProps, ViewerSt
         this.props.actions.onSelectTopic(this.props.topicId);
     }
 
+    componentDidUpdate(prevProps: ViewerProps) {
+        if (prevProps.topicId === this.props.topicId) {
+            return;
+        }
+
+        this.setState((prev) => {
+            return {
+                ...prev,
+                isStreaming: false,
+            };
+        });
+    }
+
     startConsumer() {
         this.props.actions.onStartConsumer(this.props.topicId);
         this.setState((prev) => {

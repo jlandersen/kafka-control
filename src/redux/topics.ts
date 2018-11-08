@@ -177,7 +177,7 @@ export default function topicsReducer(state: TopicsState = initialState, action:
                 ...state,
                 messagesByTopicId: {
                     ...state.messagesByTopicId,
-                    [action.topicId]: [...messages, ...action.messages],
+                    [action.topicId]: [...messages.slice(-100), ...action.messages],
                 },
             };
         case TopicsActionKeys.ConsumeTopic:

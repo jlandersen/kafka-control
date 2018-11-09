@@ -50,6 +50,7 @@ module.exports = {
                 }
             }]
     },
+    devtool: 'none',
     plugins: [
         new HtmlWebpackPlugin({ template: './static/index.html' }),
         new webpack.NoEmitOnErrorsPlugin(),

@@ -4,6 +4,8 @@ dist/
 # Awesome Typescript Loader cache
 .awcache
 
+.DS_Store
+
 # Logs
 logs
 *.log
